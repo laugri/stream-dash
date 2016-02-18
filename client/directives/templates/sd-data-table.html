@@ -1,0 +1,65 @@
+<!-- Table element, hidden when loading. -->
+<table class="dt-table" ng-if="datatable.rows.length>0">
+    <thead>
+        <tr>
+            <th ng-repeat="column in datatable.columns"
+                ng-click="datatable.orderByField = column.key;
+                          datatable.reverseSort = !datatable.reverseSort;"
+            >
+                <span>
+                    {{ column.name }}
+                </span>
+                <span class="sort-icon">
+                    &nbsp;
+                    <i class="fa fa-caret-up"
+                       ng-show="datatable.orderByField == column.key && !datatable.reverseSort"
+                    ></i>
+                    <i class="fa fa-caret-down"
+                       ng-show="datatable.orderByField == column.key && datatable.reverseSort"
+                    >
+                    </i>
+                </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr
+            ng-repeat="row in (datatable.filteredRows =
+                (datatable.rows |
+                 orderBy:datatable.orderByField:datatable.reverseSort |
+                 filter:datatable.searchInput))"
+            ng-click="datatable.primaryAction(row)"
+
+        >
+            <!-- Regular column with custom style -->
+            <td ng-repeat="column in datatable.columns" title="{{row[column.key]}}">
+                <span ng-if="column.type === 'percentage'">
+                    {{ row[column.key] | percentage:2 }}
+                </span>
+                <span ng-if="column.type === 'float'">
+                    {{ row[column.key] | number:2 }}
+                </span>
+                <span ng-if="column.type === 'text'">
+                    {{ row[column.key] | limitTo: 40 }}
+                    {{ row[column.key].length > 40 ? '&hellip;' : ''}}
+                </span>
+                <span ng-if="column.type === 'link'">
+                    <a
+                        href="{{row[column.key]}}"
+                        target="_blank"
+                        ng-click="$event.stopPropagation();"
+                    >
+                        {{ row[column.key] | url:column.domain | limitTo: 40 }}
+                        {{ row[column.key].length > 40 ? '&hellip;' : ''}}
+                    </a>
+                </span>
+                <span ng-if="column.type === 'date'">
+                    {{ row[column.key] | date:'yyyy-MM-dd HH:mm:ss' }}
+                </span>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr></tr>
+    </tfoot>
+</table>

@@ -5,8 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1" />
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500"
+          rel="stylesheet"
+          type="text/css"
+    >
     <link rel="stylesheet"
-          href="/assets/projects/css/style.css"
+          href="/assets/projects/css/global.css"
+          type="text/css"
+    >
+    <link rel="stylesheet"
+          href="/assets/projects/css/table.css"
+          type="text/css"
+    >
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+          type="text/css"
     >
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
 
@@ -17,12 +30,27 @@
 
 <body ng-app="StreamDash" ng-controller="IndexController">
     <!-- Content will sit here -->
-    Hello There
+    <h1>Github Stream Dashboard</h1>
+    <section class="dashboard">
+        <h2>
+            Feed
+        </h2>
+        <sd-data-table datatable="table"></sd-data-table>
+        {{rows}}
+    </section>
 
     <!-- CDNs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js"></script>
 
-    <!-- Angular -->
+    <!-- App -->
+
     <script src="app.js"></script>
+    <!-- Services -->
+    <script src="services/datatable.srv.js"></script>
+    <script src="services/events.srv.js"></script>
+    <!-- Directives -->
+    <script src="directives/sd-data-table.js"></script>
+    <!-- Controllers -->
     <script src="controllers/index.ctrl.js"></script>
 
 </body>

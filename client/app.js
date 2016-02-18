@@ -1,1 +1,1 @@
-var app = angular.module('StreamDash', []);
+var app = angular.module('StreamDash', ['ngResource']);

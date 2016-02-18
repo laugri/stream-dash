@@ -1,0 +1,85 @@
+/* data-table */
+
+.dt-frame {
+  background-color: white
+}
+
+.dt-title {
+  padding: 24px;
+  margin: 0;
+}
+
+.dt-table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+  border: #E3E3E3 2px solid
+}
+
+.dt-table td, .dt-table th {
+  text-align: left;
+  padding: 0 24px;
+}
+
+.dt-table th:focus {
+  outline: none;
+}
+
+.dt-table th {
+  cursor: default;
+  white-space: nowrap;
+}
+
+.dt-table tr {
+  height: 48px;
+  border-bottom: solid 2px #E3E3E3;
+  color: rgba(0, 0, 0, 0.67);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dt-table thead tr, .dt-table tfoot {
+  height: 56px;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+}
+
+.dt-tools {
+  padding: 24px;
+}
+
+.dt-actions {
+  padding-left: 24px;
+  padding-top: 12px
+}
+
+.dt-actions button {
+  padding: 0px;
+  margin: 0px 24px 0px 0px;
+}
+
+.dt-table tbody tr:hover {
+  background-color: #EEEEEE;
+}
+
+.dt-table tbody tr:active {
+  background-color: #F5F5F5;
+}
+
+.dt-table tbody tr {
+  cursor: pointer;
+}
+
+.dt-table span.sort-icon {
+  width: 10px !important;
+  height: 10px !important;
+  display: inline;
+}
+
+.dt-table i {
+  vertical-align: middle;
+}
+
+.dt-row-action:hover {
+  background-color: rgb(200, 200, 200) !important
+}
