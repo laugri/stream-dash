@@ -35,6 +35,12 @@
         <h2>
             Feed
         </h2>
+        <section>
+            <label ng-repeat="(eventType, count) in eventTypeCounter">
+                <input type="checkbox" ng-model="typeSelection[eventType]">
+                {{eventType}}
+            </label>
+        </section>
         <sd-data-table datatable="table"></sd-data-table>
         {{rows}}
     </section>
