@@ -1,1 +1,1 @@
-var app = angular.module('StreamDash', ['ngResource']);
+var app = angular.module('StreamDash', ['nvd3']);

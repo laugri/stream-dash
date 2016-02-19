@@ -10,6 +10,10 @@
           type="text/css"
     >
     <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+          type="text/css"
+    >
+    <link rel="stylesheet"
           href="/assets/projects/css/global.css"
           type="text/css"
     >
@@ -18,10 +22,21 @@
           type="text/css"
     >
     <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+          href="/assets/bower_components/nvd3/build/nv.d3.css"
           type="text/css"
     >
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <!-- App -->
+    <script src="/assets/bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="services/datatable.srv.js"></script>
+    <script src="services/events.srv.js"></script>
+    <script src="directives/sd-data-table.js"></script>
+    <script src="controllers/index.ctrl.js"></script>
+    <!-- Dependencies -->
+    <script src="/assets/bower_components/d3/d3.js"></script>
+    <script src="/assets/bower_components/nvd3/build/nv.d3.js"></script>
+    <script src="/assets/bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+
 
     <title>
         GitHub Stream Dashboard
@@ -38,26 +53,14 @@
         <section>
             <label ng-repeat="(eventType, count) in eventTypeCounter">
                 <input type="checkbox" ng-model="typeSelection[eventType]">
-                {{eventType}}
+                <span>
+                    {{eventType}}
+                </span>
             </label>
         </section>
         <sd-data-table datatable="table"></sd-data-table>
         {{rows}}
     </section>
-
-    <!-- CDNs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js"></script>
-
-    <!-- App -->
-
-    <script src="app.js"></script>
-    <!-- Services -->
-    <script src="services/datatable.srv.js"></script>
-    <script src="services/events.srv.js"></script>
-    <!-- Directives -->
-    <script src="directives/sd-data-table.js"></script>
-    <!-- Controllers -->
-    <script src="controllers/index.ctrl.js"></script>
 
 </body>
 
