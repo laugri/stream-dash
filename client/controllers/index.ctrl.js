@@ -9,6 +9,15 @@ app.controller(
             {name: 'Event Type', key: 'type', type: 'text'},
         ];
         var rows = [];
+        var buildChartData = function(counter) {
+            var series = [];
+            for (var key in counter) {
+                if (counter.hasOwnProperty(key)) {
+                    series.push({y: counter[key], x: key});
+                }
+            }
+            return series;
+        };
 
         $scope.eventTypeCounter = {};
         $scope.typeSelection = {};
@@ -27,6 +36,26 @@ app.controller(
             }
         );
 
+        $scope.piechart = {
+            options: {
+            chart: {
+                type: 'pieChart',
+                height: 450,
+                donut: true,
+                showLabels: true,
+                duration: 500,
+                legend: {
+                    margin: {
+                        top: 5,
+                        right: 70,
+                        bottom: 5,
+                        left: 0
+                    }
+                }
+            }
+        },
+            data: []
+        };
 
         events.query()
             .success(function(data) {
@@ -44,6 +73,7 @@ app.controller(
                 for (var i=0; i<$scope.eventTypes.length; i++) {
                     $scope.typeSelection[$scope.eventTypes[i]] = true;
                 }
+                $scope.piechart.data = buildChartData($scope.eventTypeCounter);
             })
             .error(function(data, status, headers, config) {
                 $window.alert(data, status, headers);
