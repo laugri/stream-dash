@@ -9,18 +9,24 @@ app.controller(
             {name: 'Event Type', key: 'type', type: 'text'},
         ];
         var rows = [];
-        var table = new DataTable(
-            columns,
-            rows,
-            'date'
-        );
 
         $scope.eventTypeCounter = {};
         $scope.typeSelection = {};
-        $scope.table = table;
-        $scope.table.primaryAction = function(row) {
-            $window.open(row.url, '_blank');
+        $scope.filterByType = function(row) {
+            return $scope.typeSelection[row.type];
         };
+
+        $scope.table = new DataTable(
+            columns,
+            rows,
+            'date',
+            true,
+            $scope.filterByType,
+            function(row) {
+                $window.open(row.url, '_blank');
+            }
+        );
+
 
         events.query()
             .success(function(data) {
