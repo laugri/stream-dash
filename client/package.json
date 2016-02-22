@@ -1,0 +1,26 @@
+{
+  "name": "streamdash",
+  "version": "1.0.0",
+  "description": "Visualising GitHub API event streams",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laugri/stream-dash.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laugri/stream-dash/issues"
+  },
+  "homepage": "https://github.com/laugri/stream-dash#readme",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-nvd3": "^1.0.5",
+    "d3": "^3.5.16",
+    "nvd3": "^1.8.2"
+  }
+}
