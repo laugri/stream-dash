@@ -47,28 +47,35 @@
     <!-- Content will sit here -->
     <h1>Github Stream Dashboard</h1>
     <section class="dashboard">
-        <section class="charts">
-            <nvd3 options="piechart.options" data="piechart.data"></nvd3>
+        <section class="control-panel">
+            <h2>Control Panel</h2>
+            <div class="container">
+                <nvd3 class="panel-child"
+                    options="piechart.options"
+                    data="piechart.data"
+                ></nvd3>
+                <div class="filter-panel panel-child">
+                    <label class="filter"
+                        ng-repeat="(eventType, count) in eventTypeCounter"
+                    >
+                        <input
+                            type="checkbox"
+                            ng-model="typeSelection[eventType]"
+                            ng-change="piechart.update()"
+                        >
+                        <span>
+                            {{eventType}}
+                        </span>
+                    </label>
+                </div>
+            </div>
         </section>
         <section class="feed">
             <h2>
                 Feed
             </h2>
-            <div class="event-filter">
-                <label ng-repeat="(eventType, count) in eventTypeCounter">
-                    <input
-                        type="checkbox"
-                        ng-model="typeSelection[eventType]"
-                        ng-change="piechart.update()"
-                    >
-                    <span>
-                        {{eventType}}
-                    </span>
-                </label>
-            </div>
+            <sd-data-table datatable="table"></sd-data-table>
         </section>
-        <sd-data-table datatable="table"></sd-data-table>
-        {{rows}}
     </section>
 
 </body>
