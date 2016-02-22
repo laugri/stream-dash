@@ -56,7 +56,11 @@
             </h2>
             <div class="event-filter">
                 <label ng-repeat="(eventType, count) in eventTypeCounter">
-                    <input type="checkbox" ng-model="typeSelection[eventType]">
+                    <input
+                        type="checkbox"
+                        ng-model="typeSelection[eventType]"
+                        ng-change="piechart.update()"
+                    >
                     <span>
                         {{eventType}}
                     </span>
