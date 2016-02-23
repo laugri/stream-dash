@@ -16,7 +16,7 @@ app.controller(
          * @param {object} counter - e.g. {someStuff: 3, someOtherStuff: 6}
          */
         var buildEventController = function(counter) {
-            series = []
+            var series = [];
             for (var key in counter) {
                 if (counter.hasOwnProperty(key)) {
                     series.push(
@@ -49,8 +49,8 @@ app.controller(
                     height: 450,
                     donut: true,
                     showLegend: false,
-                    x: function(d) {return d.type},
-                    y: function(d) {return d.status ? d.count : null},
+                    x: function(d) {return d.type;},
+                    y: function(d) {return d.status ? d.count : null;},
                     showLabels: true,
                     labelsOutside: true,
                     duration: 500,
@@ -85,7 +85,7 @@ app.controller(
                 .error(function(data, status, headers, config) {
                     $window.alert(data, status, headers);
                 });
-        }
+        };
 
         $scope.fetchEvents();
     }]
