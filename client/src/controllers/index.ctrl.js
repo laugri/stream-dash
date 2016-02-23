@@ -15,7 +15,7 @@ app.controller(
          * @function
          * @param {object} counter - e.g. {someStuff: 3, someOtherStuff: 6}
          */
-        var buildEventController = function(counter) {
+        $scope.buildEventController = function(counter) {
             var series = [];
             for (var key in counter) {
                 if (counter.hasOwnProperty(key)) {
@@ -25,6 +25,18 @@ app.controller(
                 }
             }
             return series.sort(function(a, b){return b.count - a.count;});
+        };
+
+        $scope.buildTableRows = function(eventData) {
+            return eventData.map(function(e) {
+                return {
+                    type: e.type,
+                    repo: e.repo.name,
+                    user: e.actor.login,
+                    date: e.created_at,
+                    url: e.repo.url
+                };
+            });
         };
 
         $scope.eventTypeController = [];
@@ -70,16 +82,8 @@ app.controller(
         $scope.fetchEvents = function() {
             events.query()
                 .success(function(data) {
-                    $scope.table.rows = data.map(function(e) {
-                        return {
-                            type: e.type,
-                            repo: e.repo.name,
-                            user: e.actor.login,
-                            date: e.created_at,
-                            url: e.repo.url
-                        };
-                    });
-                    $scope.eventTypeController = buildEventController(events.countTypes());
+                    $scope.table.rows = $scope.buildTableRows(data);
+                    $scope.eventTypeController = $scope.buildEventController(events.countTypes());
                     $scope.piechart.data = $scope.eventTypeController;
                 })
                 .error(function(data, status, headers, config) {

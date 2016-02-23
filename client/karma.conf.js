@@ -5,7 +5,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'fixture'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -14,6 +14,7 @@ module.exports = function(config) {
       'node_modules/angular-mocks/angular-mocks.js',
       'src/**/*.js',
       'tests/**/*Spec.js',
+      'tests/mocks/**/*.json',
     ],
 
     // list of files to exclude
@@ -23,6 +24,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      '**/*.json'   : ['json_fixtures']
+    },
+
+    jsonFixturesPreprocessor: {
+      variableName: '__json__'
     },
 
     // test results reporter to use
@@ -54,5 +60,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
