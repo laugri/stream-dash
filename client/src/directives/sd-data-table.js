@@ -4,7 +4,7 @@ app.directive('sdDataTable', ['DataTable', function(DataTable) {
         scope: {
             datatable: '=',
         },
-        templateUrl: 'directives/templates/sd-data-table.html',
+        templateUrl: 'src/directives/templates/sd-data-table.html',
         link: function($scope) {
             $scope.$watch('datatable', function() {
                 $scope.datatable = $scope.datatable;
