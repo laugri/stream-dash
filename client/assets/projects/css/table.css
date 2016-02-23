@@ -1,19 +1,9 @@
 /* data-table */
 
-.dt-frame {
-  background-color: white
-}
-
-.dt-title {
-  padding: 24px;
-  margin: 0;
-}
-
-.dt-table {
+table.dt-table {
   border-collapse: collapse;
   width: 100%;
   background-color: white;
-  border: #E3E3E3 2px solid
 }
 
 .dt-table td, .dt-table th {
@@ -45,20 +35,6 @@
   text-transform: uppercase;
 }
 
-.dt-tools {
-  padding: 24px;
-}
-
-.dt-actions {
-  padding-left: 24px;
-  padding-top: 12px
-}
-
-.dt-actions button {
-  padding: 0px;
-  margin: 0px 24px 0px 0px;
-}
-
 .dt-table tbody tr:hover {
   background-color: #EEEEEE;
 }
@@ -79,8 +55,4 @@
 
 .dt-table i {
   vertical-align: middle;
-}
-
-.dt-row-action:hover {
-  background-color: rgb(200, 200, 200) !important
 }

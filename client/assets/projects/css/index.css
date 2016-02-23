@@ -9,14 +9,24 @@ body {
   background-color: #F3F3F3;
 }
 
+h1, h2, h3 {
+  font-weight: 300;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+}
+
+.card {
+  margin-bottom: 50px;
+  border: #E3E3E3 2px solid;
+  background-color: white;
+}
+
 .refresh-panel {
   text-align: center;
   margin: 50px;
-}
-
-.control-panel {
-  border: #E3E3E3 2px solid;
-  background-color: white;
 }
 
 .pie-panel {
@@ -28,19 +38,12 @@ body {
   padding: 24px;
 }
 
-.filter {
+.filter-panel > .filter {
   display: block;
   margin: 12px auto;
 }
 
-h1, h2, h3 {
-  font-weight: 300;
-  text-align: center;
-}
-
-.container {
-  display: flex;
-}
+/* streamdash primary button*/
 
 .sd-button {
   background-color: #e74c3c;
@@ -61,6 +64,7 @@ h1, h2, h3 {
 .sd-button:focus {
   outline: none;
 }
+
 
 /*nvd3 style overrides*/
 

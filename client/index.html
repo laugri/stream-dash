@@ -46,7 +46,7 @@
 <body ng-app="StreamDash" ng-controller="IndexController">
     <!-- Content will sit here -->
     <h1> <i class="fa fa-github"></i> Github Stream Dashboard</h1>
-    <section class="refresh-panel">
+    <section class="refresh-panel ">
         <button class="sd-button" ng-click="fetchEvents()">
             Refresh
         </button>
@@ -54,7 +54,7 @@
     </section>
     <section class="dashboard">
         <h2>Control Panel</h2>
-        <section class="control-panel">
+        <section class="card">
             <div class="container">
                 <nvd3 class="pie-panel"
                     options="piechart.options"
@@ -79,7 +79,9 @@
             <h2>
                 Feed
             </h2>
-            <sd-data-table datatable="table"></sd-data-table>
+            <section class="card">
+                <sd-data-table datatable="table"></sd-data-table>
+            </section>
         </section>
     </section>
 
