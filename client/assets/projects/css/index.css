@@ -9,6 +9,11 @@ body {
   background-color: #F3F3F3;
 }
 
+.refresh-panel {
+  text-align: center;
+  margin: 50px;
+}
+
 .control-panel {
   border: #E3E3E3 2px solid;
   background-color: white;
@@ -35,6 +40,26 @@ h1, h2, h3 {
 
 .container {
   display: flex;
+}
+
+.sd-button {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  font-size: 110%;
+  border-bottom: 4px solid #c0392b;
+  border-radius: 2px;
+}
+
+.sd-button:active {
+  background-color: #c0392b;
+  border-bottom: 4px solid #86261E;
+  outline: none;
+}
+
+.sd-button:focus {
+  outline: none;
 }
 
 /*nvd3 style overrides*/
