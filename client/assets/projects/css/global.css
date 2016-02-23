@@ -6,13 +6,20 @@ body {
   margin: auto;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  background-color: #F3F3F3;
 }
 
-.panel-child {
-  width: 50%
+.control-panel {
+  border: #E3E3E3 2px solid;
+  background-color: white;
+}
+
+.pie-panel {
+  width: 70%;
 }
 
 .filter-panel {
+  width: 30%;
   padding: 24px;
 }
 
@@ -28,4 +35,14 @@ h1, h2, h3 {
 
 .container {
   display: flex;
+}
+
+/*nvd3 style overrides*/
+
+.nvd3 text {
+  font: 300 12px Roboto !important;
+}
+
+.nvd3.nv-pie path {
+  stroke-width: 5px !important;
 }

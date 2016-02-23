@@ -14,28 +14,28 @@
           type="text/css"
     >
     <link rel="stylesheet"
-          href="/assets/projects/css/global.css"
+          href="assets/projects/css/global.css"
           type="text/css"
     >
     <link rel="stylesheet"
-          href="/assets/projects/css/table.css"
+          href="assets/projects/css/table.css"
           type="text/css"
     >
     <link rel="stylesheet"
-          href="/node_modules/nvd3/build/nv.d3.css"
+          href="node_modules/nvd3/build/nv.d3.css"
           type="text/css"
     >
     <!-- App -->
-    <script src="/node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
     <script src="app.js"></script>
     <script src="services/datatable.srv.js"></script>
     <script src="services/events.srv.js"></script>
     <script src="directives/sd-data-table.js"></script>
     <script src="controllers/index.ctrl.js"></script>
     <!-- Dependencies -->
-    <script src="/node_modules/d3/d3.js"></script>
-    <script src="/node_modules/nvd3/build/nv.d3.js"></script>
-    <script src="/node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
+    <script src="node_modules/d3/d3.js"></script>
+    <script src="node_modules/nvd3/build/nv.d3.js"></script>
+    <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
 
 
     <title>
@@ -45,26 +45,25 @@
 
 <body ng-app="StreamDash" ng-controller="IndexController">
     <!-- Content will sit here -->
-    <h1>Github Stream Dashboard</h1>
+    <h1> <i class="fa fa-github"></i> Github Stream Dashboard</h1>
     <section class="dashboard">
+        <h2>Control Panel</h2>
         <section class="control-panel">
-            <h2>Control Panel</h2>
             <div class="container">
-                <nvd3 class="panel-child"
+                <nvd3 class="pie-panel"
                     options="piechart.options"
                     data="piechart.data"
                 ></nvd3>
-                <div class="filter-panel panel-child">
+                <div class="filter-panel">
                     <label class="filter"
-                        ng-repeat="(eventType, count) in eventTypeCounter"
+                        ng-repeat="event in eventTypeController"
                     >
                         <input
                             type="checkbox"
-                            ng-model="typeSelection[eventType]"
-                            ng-change="piechart.update()"
+                            ng-model="event.status"
                         >
                         <span>
-                            {{eventType}}
+                            {{event.type}}
                         </span>
                     </label>
                 </div>

@@ -11,24 +11,23 @@ app.controller(
         var rows = [];
 
         /**
-         * Represents the table and its parameters.
+         * Builds an array containing all event types, their frequency and status.
          * @function
          * @param {object} counter - e.g. {someStuff: 3, someOtherStuff: 6}
-         * @param {object} selection - specifies a selection of the counter. All keys in the counter must also be in
-         *      in the selection object. e.g. {someStuff: true, someOtherStuff: false}
          */
-        var buildChartData = function(counter, selection) {
-            var series = [];
+        var buildEventController = function(counter) {
+            series = []
             for (var key in counter) {
-                if (counter.hasOwnProperty(key) && selection[key] === true) {
-                    series.push({y: counter[key], x: key});
+                if (counter.hasOwnProperty(key)) {
+                    series.push(
+                        {count: counter[key], type: key, status: true}
+                    );
                 }
             }
-            return series.sort(function(a, b){return b.y - a.y;});
+            return series.sort(function(a, b){return b.count - a.count;});
         };
 
-        $scope.eventTypeCounter = {};
-        $scope.typeSelection = {};
+        $scope.eventTypeController = [];
 
         $scope.table = new DataTable(
             columns,
@@ -36,7 +35,7 @@ app.controller(
             'date',
             true,
             function(row) {
-                return $scope.typeSelection[row.type];
+                return $scope.eventTypeController.find(function(e){return row.type === e.type;}).status;
             },
             function(row) {
                 $window.open(row.url, '_blank');
@@ -50,6 +49,8 @@ app.controller(
                     height: 450,
                     donut: true,
                     showLegend: false,
+                    x: function(d) {return d.type},
+                    y: function(d) {return d.status ? d.count : null},
                     showLabels: true,
                     labelsOutside: true,
                     duration: 500,
@@ -63,10 +64,7 @@ app.controller(
                     }
                 }
             },
-            data: [],
-            update: function() {
-                this.data = buildChartData($scope.eventTypeCounter, $scope.typeSelection);
-            },
+            data: $scope.eventTypeController,
         };
 
         events.query()
@@ -80,12 +78,8 @@ app.controller(
                         url: e.repo.url
                     };
                 });
-                $scope.eventTypeCounter = events.countTypes();
-                $scope.eventTypes = Object.keys($scope.eventTypeCounter);
-                for (var i=0; i<$scope.eventTypes.length; i++) {
-                    $scope.typeSelection[$scope.eventTypes[i]] = true;
-                }
-                $scope.piechart.update();
+                $scope.eventTypeController = buildEventController(events.countTypes());
+                $scope.piechart.data = $scope.eventTypeController;
             })
             .error(function(data, status, headers, config) {
                 $window.alert(data, status, headers);
